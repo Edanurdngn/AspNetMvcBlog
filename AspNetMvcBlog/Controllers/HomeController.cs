@@ -13,5 +13,11 @@ namespace AspNetMvcBlog.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
     }
 }
