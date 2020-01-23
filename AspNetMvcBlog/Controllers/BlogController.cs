@@ -6,39 +6,33 @@ using System.Web.Mvc;
 
 namespace AspNetMvcBlog.Controllers
 {
-    public class HomeController : Controller
+    public class BlogController : Controller
     {
-        [HttpGet]
+        // GET: Blog
         public ActionResult Index()
         {
-            ViewBag.Title = "Narail | 2018";
+            ViewBag.Title = "Narail | Blog";
             return View();
         }
-        public ActionResult Slider()
+        public ActionResult Category()
         {
+           
             return View();
         }
-        public ActionResult Info()
+        public ActionResult Popular()
         {
+
             return View();
         }
-        public ActionResult About()
+        public ActionResult Tag()
         {
+
             return View();
         }
-        public ActionResult Projects()
+        public ActionResult Detail()
         {
-            return View();
-        }
-        public ActionResult Counter()
-        {
-            return View();
-        }
-        public ActionResult Blog()
-        {
+
             return View();
         }
     }
-
 }
-
