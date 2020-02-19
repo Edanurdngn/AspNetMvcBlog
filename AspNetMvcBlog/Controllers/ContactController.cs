@@ -19,38 +19,63 @@ namespace AspNetMvcBlog.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Narail | İletişim";
+            List <SelectListItem> ulkeadi = (from i in db.TelKodu.ToList()
+                                            select new SelectListItem
+                                            {
+                                                
+                                                Text =i.UlkeAd,
+                                                Value = i.Id.ToString()
+                                            }).ToList();
+            ViewBag.bag = ulkeadi;
             return View();
+        }
+        [HttpGet]
+        public JsonResult GetJsonResult()
+        {
+            var result = db.TelKodu.ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         ResultEmail results;
         [HttpPost]
         public ActionResult Index(Send Savemail)
         {
+         
+            
+
+            List<SelectListItem> ulkekodu = (from i in db.TelKodu.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.UlkeKodu,
+                                                 Value = i.Id.ToString()
+                                             }).ToList();
+            ViewBag.bag = ulkekodu;
+
             try
             {
                 try
                 {
                     string[] email = Savemail.Kime.Split(';');
+                  
                     for (int i = 0; i < email.Count(); i++)
                     {
                         results = EmailExtension.EmailRegex(email[i]);
                     }
                     if (results.ResultErrorList.Count > 0)
                     {
-                        ModelState.AddModelError("Kime","Email girişlerinde hatalı bir email mevcut");
+                        ModelState.AddModelError("Kime", "Email girişlerinde hatalı bir email mevcut");
                         return View(Savemail);
                     }
                     else
                     {
-                        foreach (var item in results.ResultEmailList)
+                        foreach (var item in email)
                         {
                             var senderEmail = new MailAddress("edanurdingin@gmail.com", "Edanur");
 
                             var receiverEmail = new MailAddress(item, "Receiver");
 
-                            var password = "runade5234-";
+                            var password = "sifre";
                             var sub = Savemail.Konu;
-                            var body = Savemail.Mesaj + "  " + Savemail.Kim + "  " + Savemail.Telefon;
-
+                            var body = Savemail.Mesaj + "  " + Savemail.Kim + " " + Savemail.Telefon;
                             var smtp = new SmtpClient()
                             {
                                 Host = "smtp.gmail.com",
@@ -67,6 +92,7 @@ namespace AspNetMvcBlog.Controllers
 
                             })
                                 smtp.Send(mess);
+                            db.Send.Add(Savemail);
                             db.SaveChanges();
                         }
                     }
@@ -84,7 +110,13 @@ namespace AspNetMvcBlog.Controllers
 
                 throw new Exception(ex.Message);
             }
-           
+
+        }
+
+        public JsonResult TelefonKoduGetir(int id)
+        {
+            var result = db.TelKodu.FirstOrDefault(x => x.Id == id).UlkeKodu;
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -140,6 +140,55 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site\images\background\1.jpg" />
+    <Content Include="Content\Site\images\background\2.jpg" />
+    <Content Include="Content\Site\images\background\5.jpg" />
+    <Content Include="Content\Site\images\background\6.jpg" />
+    <Content Include="Content\Site\images\blog\1.jpg" />
+    <Content Include="Content\Site\images\blog\2.jpg" />
+    <Content Include="Content\Site\images\blog\3.jpg" />
+    <Content Include="Content\Site\images\blog\bs.jpg" />
+    <Content Include="Content\Site\images\flag\Azerbaijan.png" />
+    <Content Include="Content\Site\images\flag\cin.gif" />
+    <Content Include="Content\Site\images\flag\Germany.png" />
+    <Content Include="Content\Site\images\flag\Hungary.png" />
+    <Content Include="Content\Site\images\flag\Turkey.png" />
+    <Content Include="Content\Site\images\icons\preloader.gif" />
+    <Content Include="Content\Site\images\logo\favicon.png" />
+    <Content Include="Content\Site\images\logo\logo.png" />
+    <Content Include="Content\Site\images\logo\logo2.png" />
+    <Content Include="Content\Site\images\logo\logo852.png" />
+    <Content Include="Content\Site\images\project\1.jpg" />
+    <Content Include="Content\Site\images\project\2.jpg" />
+    <Content Include="Content\Site\images\project\3.jpg" />
+    <Content Include="Content\Site\images\project\4.jpg" />
+    <Content Include="Content\Site\images\project\5.jpg" />
+    <Content Include="Content\Site\images\project\6.jpg" />
+    <Content Include="Content\Site\images\resource\about.jpg" />
+    <Content Include="Content\Site\images\resource\fi1.jpg" />
+    <Content Include="Content\Site\images\resource\fi2.jpg" />
+    <Content Include="Content\Site\images\resource\fi3.jpg" />
+    <Content Include="Content\Site\images\resource\fi4.jpg" />
+    <Content Include="Content\Site\images\resource\fi5.jpg" />
+    <Content Include="Content\Site\images\resource\fi6.jpg" />
+    <Content Include="Content\Site\images\resource\founder.jpg" />
+    <Content Include="Content\Site\images\resource\tb.png" />
+    <Content Include="Content\Site\images\resource\tb2.png" />
+    <Content Include="Content\Site\images\resource\who.jpg" />
+    <Content Include="Content\Site\images\service\s1.jpg" />
+    <Content Include="Content\Site\images\service\ss2.jpg" />
+    <Content Include="Content\Site\images\slider\1.jpg" />
+    <Content Include="Content\Site\images\slider\2.jpg" />
+    <Content Include="Content\Site\images\slider\3.jpg" />
+    <Content Include="Content\Site\images\slider\4.jpg" />
+    <Content Include="Content\Site\images\slider\5.jpg" />
+    <Content Include="Content\Site\images\slider\6.jpg" />
+    <Content Include="Content\Site\images\slider\7.jpg" />
+    <Content Include="Content\Site\images\slider\8.jpg" />
+    <Content Include="Content\Site\images\team\1.jpg" />
+    <Content Include="Content\Site\images\team\2.jpg" />
+    <Content Include="Content\Site\images\team\3.jpg" />
+    <Content Include="Content\Site\images\team\4.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
@@ -204,6 +253,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\EmailExtensionDto.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <DependentUpon>Model1.Context.tt</DependentUpon>
@@ -267,7 +317,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\" />
-    <Folder Include="Content\Site\" />
+    <Folder Include="Content\Site\images\clients\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

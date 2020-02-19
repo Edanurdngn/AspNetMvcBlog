@@ -16,7 +16,7 @@
         <div class="pull-left">
             <ul class="list-inline link-list">
                 <li>
-                    <a href="@Url.Action("Index","Home")">Anasayfa</a>
+                    <a href="@Url.Action("Index", "Home")">Anasayfa</a>
                 </li>
                 <!-- comment for inline hack
                 -->
@@ -44,50 +44,51 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
                                 <div class="form-group">
-                                    Ad Soyad:
+
                                     @*<input type="text" name="form_name" class="form-control" value="" placeholder="Adınız *" required="" aria-required="true">*@
-                                    @Html.TextBoxFor(m => m.Kim, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.Kim, new { @class = "form-control", @placeholder = "Ad Soyad" })
                                     @Html.ValidationMessageFor(m => m.Kim, "", new { @style = "color:red" })
 
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    E-posta:
+
                                     @*<input type="text" name="form_email" class="form-control" value="" placeholder="Mail Adresi *" required="" aria-required="true">*@
-                                    @Html.TextBoxFor(m => m.Kime, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.Kime, new { @class = "form-control", @placeholder = "E-Posta" })
                                     @Html.ValidationMessageFor(m => m.Kime, "", new { @style = "color:red" })
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    Kodu:
+
                                     @*<input type="text" name="form_phone" class="form-control" value="" placeholder="Telefon ">*@
-                                    @Html.DropDownListFor(m => m.UlkeId, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
-                                </div>
-                                <div class="form-group">
-                                    Telefon:
-                                    @*<input type="text" name="form_phone" class="form-control" value="" placeholder="Telefon ">*@
-                                    @Html.TextBoxFor(m => m.Telefon, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Telefon, "", new { @style = "color:red" })
+                                    @Html.DropDownListFor(m => m.UlkeId, (List<SelectListItem>)ViewBag.bag, new { @class = "form-control" })
+
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    Konu:
-                                    @*<input type="text" name="subject" class="form-control" value="" placeholder="Konu ">*@
-                                    @Html.TextBoxFor(m => m.Konu, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Konu, "", new { @style = "color:red" })
-
+                                    @*<input type="text" name="form_phone" class="form-control" value="" placeholder="Telefon ">*@
+                                    @Html.TextBoxFor(m => m.Telefon, new { @class = "form-control", @placeholder = "Telefon" })
+                                    @Html.ValidationMessageFor(m => m.Telefon, "", new { @style = "color:red" })
                                 </div>
                             </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-12 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    Mesajınız:
-                                    @*<textarea name="message" class="form-control textarea required" placeholder="Mesajınız...." aria-required="true"></textarea>*@
-                                    @Html.TextAreaFor(m => m.Mesaj, new { @class = "form-control" })
+                                    @*<input type="text" name="form_phone" class="form-control" value="" placeholder="Telefon ">*@
+                                    @Html.TextBoxFor(m => m.Konu, new { @class = "form-control", @placeholder = "Konu" })
+                                    @Html.ValidationMessageFor(m => m.Konu, "", new { @style = "color:red" })
+                                </div>
+                            </div>
+                           
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group>
+                                    <input type="text" name="form_phone" class="form-control" value="" placeholder="Telefon ">
+                                    @Html.TextAreaFor(m => m.Mesaj, new { @class = "form-control", @placeholder = "Mesajınız..." })
                                     @Html.ValidationMessageFor(m => m.Mesaj, "", new { @style = "color:red" })
-
+                                    <br />
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -145,7 +146,7 @@
             </div>
         </div>
     </div>
-    <script src="@Url.Action("~/Content/Site/js/jquery.js")"></script>
+    @*<script src="@Url.Action("~/Content/Site/js/jquery.js")"></script>*@
 </section>
 <div class="map-section">
     <div class="map-outer">
@@ -153,3 +154,28 @@
 
     </div>
 </div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $("#UlkeId").change(function () {
+        var value = $('#UlkeId').val();
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("TelefonKoduGetir","Contact")",
+            data: {id:value},
+            dataType: "json",
+            success: function (result) {
+                $("#Telefon").val(result);
+                if (result != null) {
+                    $("#Telefon").val(result);
+                }
+                else {
+                    console.log("Kayıt bulunamadı");
+                }
+            }
+        });
+    });
+
+
+</script>
+
